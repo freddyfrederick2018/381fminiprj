@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 60%;
+        width: 800px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style></head>
+<body>
+    <div class="w3-container w3-green" >
+        <h1><%=photo[0].name%></h1>
+    </div>
+    <img src=" data:<%=photo[0].mimetype%>;base64, <%=photo[0].image%>" style="width:800px">
+    <div class="w3-container w3-green" >
+        <p>Borough: <%=photo[0].borough%></>
+        <p>Cuisine: <%=photo[0].cuisine%></>
+        <p>Street: <%=photo[0].address.street%></>
+        <p>Building: <%=photo[0].address.building%></>
+        <p>Zipcode: <%=photo[0].address.zipcode%></>
+        <p>Longitude:<%=photo[0].address.coord[0]%></>
+        <p>Latitude: <%=photo[0].address.coord[1]%></>
+        <p>Owner: <%=photo[0].owner%></>
+        
+	    <br><br>
+       
+    </div>
+    <div>
+    	<H3>Grading</H3>
+		<p>Please choose a grade, then click the submit button</p>
+	      <form action = "/grade/<%= photo[0]._id %>" method="post">
+	      <select name="score">
+	      	<option value="1":>1</option>
+	      	<option value="2":>2</option>
+	      	<option value="3":>3</option>
+	      	<option value="4":>4</option>
+	      	<option value="5":>5</option>
+	      	<option value="6":>6</option>
+	      	<option value="7":>7</option>
+	      	<option value="8":>8</option>
+	      	<option value="9":>9</option>
+	      	<option value="10":>10</option>
+	      </select>	
+	      <input type="submit" value="Submit">
+	      </form>
+	      <br>
+    </div>
+
+    <H3>Location</H3>
+		
+	<div id="map"></div>
+
+    
+    <script>
+
+      function initMap() {
+        var myLatLng = {lat: <%=photo[0].address.coord[1]%>, lng: <%=photo[0].address.coord[0]%>};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 18,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACzdU_wtJcUs2ZquXdIBlezVBWmi9XhY8&callback=initMap">
+    </script>
+
+
+    <br>
+    <a href=/photos>Go back</a>
+    <br><br>
+</body>
+
+</html>

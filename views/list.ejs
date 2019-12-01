@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Restaurants</title>
+    </head>
+    <body>
+        <H2>Showing <%= photos.length %> document(s)</H2>
+        
+        <div>
+        	<form action="/search/" method="post">
+        		<select name="option">
+			      	<option value="name":>Name</option>
+			      	<option value="borough":>Borough</option>
+			      	<option value="cuisine":>Cuisine</option>
+			      </select>	
+			      <input name="keyword" type="text" placeholder="Keywords here">
+				  <input type="submit" value="Search">
+        	</form>
+        </div><br>
+        <a href='/photos'>Show all documents</a>
+        <div>
+	        <ol>
+	            <% for (i in photos) { %>
+	                <li><a href=/display?_id=<%= photos[i]._id%>><%=photos[i].name%></a></li>
+	
+	            <% } %>
+	        </ol>
+        </div>
+        </br>
+        
+        <a href='/create'>Create</a>
+        <a href='/logout'>Logout</a>
+    </body>
+</html>

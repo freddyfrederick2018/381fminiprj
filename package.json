@@ -1,0 +1,21 @@
+{
+  "name": "login",
+  "version": "1.0.0",
+  "description": "This example demonstrates the use of cookie session to store user credential",
+  "main": "server.js",
+  "dependencies": {
+    "mongodb": "*",
+    "body-parser": "*",
+    "cookie-session": "*",
+    "ejs": "*",
+    "express": "*",
+    "formidable": "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
